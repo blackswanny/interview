@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('interview').controller('InterviewController',
-  function ($scope, $http, $rootScope) {
+  function ($scope, $http, $rootScope, Socket) {
     $http.get('/api/interview/session').then(function(res) {
       console.debug('res.data', res.data);
 
@@ -29,10 +29,18 @@ angular.module('interview').controller('InterviewController',
         }
 
       });
-      
+      if (!Socket.socket) {
+        Socket.connect();
+      }
       $scope.selectedTab = function (tab) {
         $rootScope.$broadcast('tabSelected', tab);
-      }
+        Socket.emit('tabSelectedMessage', {
+           tab: tab
+        });
+      };
+      Socket.on('tabSelectedMessage', function (scope) {
+        console.log(scope.tab);
+      });
     });
   }
 );
