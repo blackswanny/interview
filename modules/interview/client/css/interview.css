@@ -1,0 +1,45 @@
+body, html {
+  height: 100%;
+}
+
+section {
+  position: relative;
+  height: 100%;
+}
+
+.content {
+  margin-top: 0;
+}
+
+.page-header {
+  position: absolute;
+  z-index: 3;
+}
+
+#videos {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#subscriber {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#publisher {
+  position: absolute;
+  width: 360px;
+  height: 240px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 2;
+  border: 3px solid white;
+  border-radius: 3px;
+}
