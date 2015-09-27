@@ -12,6 +12,10 @@ div, section {
     width: 100%;
 }
 
+.content {
+    margin-top: 0;    
+}
+
 .tab-content {
     border: 1px solid #ddd;
     border-top: none;
