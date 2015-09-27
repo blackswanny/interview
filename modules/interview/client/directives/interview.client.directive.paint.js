@@ -10,13 +10,19 @@ angular.module('interview').directive('interviewPaint', ['Socket', function (Soc
                 if (!Socket.socket) {
                     Socket.connect();
                 }
+                var ctx;
+                var canvas;
+                $scope.clearPaint = function () {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    Socket.emit('paintClearMessage', {});
+                };
                 $scope.$on('tabSelected', function (event, tab) {
                     setTimeout(function () {
                         if (tab !== 'paint') {
                             return;
                         }
-                        var canvas = document.querySelector('#paint');
-                        var ctx = canvas.getContext('2d');
+                        canvas = document.querySelector('#paint');
+                        ctx = canvas.getContext('2d');
                         var sketch = document.querySelector('#sketch');
                         var sketch_style = getComputedStyle(sketch);
                         canvas.width = parseInt(sketch_style.getPropertyValue('width'));
@@ -68,6 +74,9 @@ angular.module('interview').directive('interviewPaint', ['Socket', function (Soc
                         });
                         Socket.on('paintEndMessage', function (paint) {
                             canvas.removeEventListener('mousemove', onPaint, false);
+                        });
+                        Socket.on('paintClearMessage', function () {
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
                         });
 
 
