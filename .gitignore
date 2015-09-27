@@ -11,6 +11,7 @@ Thumbs.db
 .sass-cache/
 node_modules/
 public/lib/
+!public/lib/ace
 app/tests/coverage/
 .bower-*/
 .idea/
