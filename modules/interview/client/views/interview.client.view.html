@@ -1,10 +1,22 @@
 <section class="container" data-ng-controller="InterviewController">
-  <div class="page-header">
-    <h1>Interview Example</h1>
+  <div data-video-container>
+    <h3 class="page-header">Video</h3>
   </div>
 
   <div id="videos">
     <div id="publisher"></div>
     <div id="subscriber"></div>
+  </div>
+
+  <div data-paint-container>
+    <h3 class="page-header">Canvas</h3>
+    <interview-paint></interview-paint>
+  </div>
+  <div data-chat-container>
+    <h3 class="page-header">Chat</h3>
+  </div>
+  <div data-code-editor-container>
+    <h3 class="page-header">Code Editor</h3>
+    <interview-code-editor></interview-code-editor>
   </div>
 </section>

@@ -43,3 +43,30 @@ section {
   border: 3px solid white;
   border-radius: 3px;
 }
+
+[data-paint-container] {
+    width: 300px;
+    height: 300px;
+}
+#sketch {
+    border: 5px solid gray;
+    height: 90%;
+    width: 100%;
+    position: relative;
+}
+#tmp_canvas {
+    position: absolute;
+    left: 0px; right: 0;
+    bottom: 0; top: 0;
+    cursor: crosshair;
+}
+#codeEditor {
+    border: 5px solid gray;
+    height: 90%;
+    width: 100%;
+    position: relative;
+}
+[data-code-editor-container] {
+    width: 300px;
+    height: 300px;
+}
