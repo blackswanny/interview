@@ -23,18 +23,14 @@ div, section {
   height: 100%;
 }
 
-#subscriber {
+.small-video {
     position: absolute;
     width: 25%;
     height: 25%;
     bottom: 25px;
     left: 25px;
     border: 5px solid red;
-}
-
-#publisher {
-  width: 100%;
-  height: 100%;
+    z-index: 10;
 }
 
 #sketch {

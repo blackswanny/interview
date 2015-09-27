@@ -12,10 +12,7 @@ angular.module('interview').controller('InterviewController',
         height: '100%'
       };
 
-      console.debug('session', session);
-
       session.on('streamCreated', function(event) {
-        console.debug('streamCreated', event);
         var elements = document.querySelectorAll('[data-subscriber]');
         for (var i = 0; i < elements.length; i++) {
           var element = elements.item(i);
@@ -25,8 +22,12 @@ angular.module('interview').controller('InterviewController',
 
       session.connect(res.data.token, function(err) {
         if (err) return console.error(err);
+        var elements = document.querySelectorAll('[data-publisher]');
+        for (var i = 0; i < elements.length; i++) {
+          var element = elements.item(i);
+          session.publish(element, props);
+        }
 
-        session.publish('publisher', props);
       });
       
       $scope.selectedTab = function (tab) {
