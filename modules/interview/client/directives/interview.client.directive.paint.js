@@ -1,12 +1,15 @@
 // Create the 'chat' controller
 'use strict';
 
-angular.module('interview').directive('interviewPaint', function () {
+angular.module('interview').directive('interviewPaint', ['Socket', function (Socket) {
         return {
             restrict: 'E',
             templateUrl: 'modules/interview/views/interview.paint.client.view.html',
             link: function () {},
             controller: function ($scope) {
+                if (!Socket.socket) {
+                    Socket.connect();
+                }
                 $scope.$on('tabSelected', function (event, tab) {
                     setTimeout(function () {
                         if (tab !== 'paint') {
@@ -32,18 +35,45 @@ angular.module('interview').directive('interviewPaint', function () {
                             ctx.beginPath();
                             ctx.moveTo(mouse.x, mouse.y);
                             canvas.addEventListener('mousemove', onPaint, false);
-                        }, false);
+                            Socket.emit('paintBeginMessage', {
+                                x: mouse.x,
+                                y: mouse.y
+                            });
 
+                        }, false);
                         canvas.addEventListener('mouseup', function() {
                             canvas.removeEventListener('mousemove', onPaint, false);
+                            Socket.emit('paintEndMessage',{});
                         }, false);
                         var onPaint = function() {
                             ctx.lineTo(mouse.x, mouse.y);
                             ctx.stroke();
+                            Socket.emit('paintMoveMessage', {
+                                x: mouse.x,
+                                y: mouse.y
+                            });
                         };
+
+                        Socket.on('paintBeginMessage', function (paint) {
+                            mouse.x = paint.x;
+                            mouse.y = paint.y;
+                            ctx.beginPath();
+                            ctx.moveTo(mouse.x, mouse.y);
+                        });
+                        Socket.on('paintMoveMessage', function (paint) {
+                            mouse.x = paint.x;
+                            mouse.y = paint.y;
+                            ctx.lineTo(mouse.x, mouse.y);
+                            ctx.stroke();
+                        });
+                        Socket.on('paintEndMessage', function (paint) {
+                            canvas.removeEventListener('mousemove', onPaint, false);
+                        });
+
+
                     }, 100);
                 });
             }
         };
-    }
+    }]
 );

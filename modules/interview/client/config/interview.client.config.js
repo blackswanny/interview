@@ -3,7 +3,7 @@
 angular.module('interview').run(['Menus',
   function (Menus) {
     Menus.addMenuItem('topbar', {
-      title: 'Interview',
+      title: 'Start Interview',
       state: 'interview'
     });
   }
