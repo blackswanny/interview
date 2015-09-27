@@ -1,18 +1,22 @@
 <section class="container" data-ng-controller="InterviewController">
 
-  <div data-video-container>
+  <div>
+  <div data-video-container class="half-container">
     <h3 class="page-header">Video</h3>
   </div>
-  <div data-paint-container>
+  <div data-paint-container class="half-container">
     <h3 class="page-header">Canvas</h3>
     <interview-paint></interview-paint>
   </div>
-  <div data-chat-container>
-    <h3 class="page-header">Chat</h3>
   </div>
-  <div data-code-editor-container>
+  <div>
+  <div data-chat-container class="half-container">
+    <h3 class="page-header">Chat</h3>
+    <interview-chat></interview-chat>
+  </div>
+  <div data-code-editor-container class="half-container">
     <h3 class="page-header">Code Editor</h3>
     <interview-code-editor></interview-code-editor>
   </div>
-
+  </div>
 </section>
