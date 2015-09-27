@@ -1,26 +1,29 @@
 <section class="container" data-ng-controller="InterviewController">
-  <div id="videos">
-    <div id="publisher"></div>
-    <div id="subscriber"></div>
-  </div>
 
-  <div>
-  <div data-video-container class="half-container">
-    <h3 class="page-header">Video</h3>
-  </div>
-  <div data-paint-container class="half-container">
-    <h3 class="page-header">Canvas</h3>
-    <interview-paint></interview-paint>
-  </div>
-  </div>
-  <div>
-  <div data-chat-container class="half-container">
-    <h3 class="page-header">Chat</h3>
-    <interview-chat></interview-chat>
-  </div>
-  <div data-code-editor-container class="half-container">
-    <h3 class="page-header">Code Editor</h3>
-    <interview-code-editor></interview-code-editor>
-  </div>
-  </div>
+  <tabset>
+    <tab select="selectedTab()">
+      <tab-heading>
+        <i class="glyphicon glyphicon-bell"></i>Video</tab-heading>
+      <div id="videos">
+        <div id="publisher"></div>
+        <div id="subscriber"></div>
+      </div>
+    </tab>
+    <tab select="selectedTab()">
+      <tab-heading>
+        <i class="glyphicon glyphicon-bell"></i>Code Editor</tab-heading>
+      <interview-code-editor></interview-code-editor>
+    </tab>
+    <tab select="selectedTab()">
+      <tab-heading>
+        <i class="glyphicon glyphicon-bell"></i>Chat</tab-heading>
+      <interview-chat></interview-chat>
+    </tab>
+    <tab select="selectedTab()">
+      <tab-heading>
+        <i class="glyphicon glyphicon-bell"></i>Canvas</tab-heading>
+        <interview-paint></interview-paint>
+    </tab>
+  </tabset>
+
 </section>
