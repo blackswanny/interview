@@ -8,7 +8,7 @@ module.exports = function (io, socket) {
     socket.broadcast.emit('codeMessage', message);
   });
 
-  socket.emit('tabSelectedMessage', function (message) {
+  socket.on('tabSelectedMessage', function (message) {
     message.username = socket.request.user.username;
     socket.broadcast.emit('tabSelectedMessage', message);
   });

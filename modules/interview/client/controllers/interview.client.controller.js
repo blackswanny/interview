@@ -39,7 +39,10 @@ angular.module('interview').controller('InterviewController',
         });
       };
       Socket.on('tabSelectedMessage', function (scope) {
-        console.log(scope.tab);
+        var elements = document.querySelectorAll('[data-tab-' + scope.tab + ']');
+        if (elements.length) {
+          elements.item(0).click();
+        }
       });
     });
   }
