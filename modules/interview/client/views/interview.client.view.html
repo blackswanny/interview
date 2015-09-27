@@ -1,27 +1,27 @@
 <section class="container" data-ng-controller="InterviewController">
 
   <tabset>
-    <tab select="selectedTab()">
+    <tab select="selectedTab('video')">
       <tab-heading>
-        <i class="glyphicon glyphicon-bell"></i>Video</tab-heading>
+        <i class="glyphicon glyphicon-facetime-video"></i>Video</tab-heading>
       <div id="videos">
         <div id="publisher"></div>
-        <div id="subscriber"></div>
+        <div id="subscriber" data-subscriber></div>
       </div>
     </tab>
-    <tab select="selectedTab()">
+    <tab select="selectedTab('code')">
       <tab-heading>
-        <i class="glyphicon glyphicon-bell"></i>Code Editor</tab-heading>
+        <i class="glyphicon glyphicon-education"></i>Code Editor</tab-heading>
       <interview-code-editor></interview-code-editor>
     </tab>
-    <tab select="selectedTab()">
+    <tab select="selectedTab('chat')">
       <tab-heading>
-        <i class="glyphicon glyphicon-bell"></i>Chat</tab-heading>
+        <i class="glyphicon glyphicon-comment"></i>Chat</tab-heading>
       <interview-chat></interview-chat>
     </tab>
-    <tab select="selectedTab()">
+    <tab select="selectedTab('paint')">
       <tab-heading>
-        <i class="glyphicon glyphicon-bell"></i>Canvas</tab-heading>
+        <i class="glyphicon glyphicon-picture"></i>Paint</tab-heading>
         <interview-paint></interview-paint>
     </tab>
   </tabset>

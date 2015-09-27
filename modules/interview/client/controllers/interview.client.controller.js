@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('interview').controller('InterviewController',
-  function ($scope, $http) {
+  function ($scope, $http, $rootScope) {
     $http.get('/api/interview/session').then(function(res) {
       console.debug('res.data', res.data);
 
@@ -16,8 +16,11 @@ angular.module('interview').controller('InterviewController',
 
       session.on('streamCreated', function(event) {
         console.debug('streamCreated', event);
-
-        session.subscribe(event.stream, 'subscriber', props);
+        var elements = document.querySelectorAll('[data-subscriber]');
+        for (var i = 0; i < elements.length; i++) {
+          var element = elements.item(i);
+          session.subscribe(event.stream, element, props);
+        }
       });
 
       session.connect(res.data.token, function(err) {
@@ -26,8 +29,8 @@ angular.module('interview').controller('InterviewController',
         session.publish('publisher', props);
       });
       
-      $scope.selectedTab = function () {
-        console.log(arguments);
+      $scope.selectedTab = function (tab) {
+        $rootScope.$broadcast('tabSelected', tab);
       }
     });
   }
