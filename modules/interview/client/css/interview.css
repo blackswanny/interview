@@ -44,6 +44,12 @@ section {
   border-radius: 3px;
 }
 
+.half-container {
+    display: inline-block;
+    float: left;
+    width: 50%;
+}
+
 [data-paint-container] {
     width: 300px;
     height: 300px;
