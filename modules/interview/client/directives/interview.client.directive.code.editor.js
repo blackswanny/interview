@@ -14,17 +14,17 @@ angular.module('interview').directive('interviewCodeEditor', ['Socket',
                 if (!Socket.socket) {
                     Socket.connect();
                 }
-                var Range = ace.require('ace/range').Range;
+                //var Range = ace.require('ace/range').Range;
                 Socket.on('codeMessage', function (code) {
                     if (code.action === 'insert') {
                         editor.moveCursorTo(code.start.row, code.start.column);
                         editor.insert(code.lines.join('\n'));
                         editor.gotoLine(code.start.row, code.start.column, true);
                     } else if (code.action === 'remove') {
-                        var removeRange = new Range(code.start.row, code.start.column,
+                        /*var removeRange = new Range(code.start.row, code.start.column,
                             code.end.row, code.end.column);
                         var session = editor.getSession();
-                        session.replace(removeRange, '');
+                        session.replace(removeRange, '');*/
                     }
                 });
 
