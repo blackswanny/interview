@@ -64,3 +64,7 @@ div, section {
 .glyphicon {
     margin-right: 5px;
 }
+
+.file-upload-imgs img {
+  max-width: 100%;
+}

@@ -12,6 +12,7 @@ Thumbs.db
 node_modules/
 public/lib/
 !public/lib/ace
+!public/lib/delivery.js
 app/tests/coverage/
 .bower-*/
 .idea/

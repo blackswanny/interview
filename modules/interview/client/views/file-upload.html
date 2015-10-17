@@ -1,0 +1,8 @@
+<form class="file-upload">
+  <input type="file" class="input-file" />
+  <input type="submit" class="submit-file" />
+</form>
+
+<div class="file-upload-imgs">
+  <img ng-repeat="f in files" ng-src="data:image/png;base64,{{f.data}}" />
+</div>
